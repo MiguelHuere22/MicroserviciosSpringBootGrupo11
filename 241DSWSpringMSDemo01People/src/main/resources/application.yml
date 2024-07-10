@@ -1,24 +1,5 @@
-server:
-  port: 8090
 spring:
   application:
     name: 241DSWSpringMSDemo01People
   config:
     import: optional:configserver:http://localhost:8888
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://137.184.120.127:5432/persona
-    username: miguel
-    password: UU0yR8VpR55ppwnBD6QgFFh49RBYkFVO
-  jpa:
-    hibernate:
-      ddl-auto: create
-    #database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect      
-
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka

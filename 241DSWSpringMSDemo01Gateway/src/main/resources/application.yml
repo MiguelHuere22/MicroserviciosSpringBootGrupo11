@@ -1,1 +1,5 @@
-spring.application.name=241DSWSpringMSDemo01Gateway
+spring:
+  application:
+    name: 241CC341SpringMSDemo01Gateway
+  config:
+    import: optional:configserver:http://localhost:8888

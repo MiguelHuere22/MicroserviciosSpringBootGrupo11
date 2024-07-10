@@ -15,7 +15,6 @@
   <packaging>pom</packaging>
   <name>241DSWSpringMSDemo01Container</name>
   
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>22</maven.compiler.source>
