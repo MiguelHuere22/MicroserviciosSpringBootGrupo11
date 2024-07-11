@@ -77,3 +77,4 @@ public class People {
         this.idUbigeo = idUbigeo;
     }
 }
+
