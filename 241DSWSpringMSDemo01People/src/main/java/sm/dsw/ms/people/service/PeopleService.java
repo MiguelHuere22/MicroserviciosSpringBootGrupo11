@@ -1,7 +1,6 @@
 package sm.dsw.ms.people.service;
 
 import sm.dsw.ms.people.model.People;
-
 import java.util.List;
 
 public interface PeopleService {

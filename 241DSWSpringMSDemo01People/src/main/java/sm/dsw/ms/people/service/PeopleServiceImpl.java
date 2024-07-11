@@ -1,10 +1,10 @@
 package sm.dsw.ms.people.service;
 
 import sm.dsw.ms.people.model.People;
+import sm.dsw.ms.people.repository.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import sm.dsw.ms.people.repository.PeopleRepository;
 
 @Service
 public class PeopleServiceImpl implements PeopleService {
@@ -28,12 +28,6 @@ public class PeopleServiceImpl implements PeopleService {
     }
 
     @Override
-    public void deletePersona(Long id) {
-        People persona = personaRepository.findById(id).orElseThrow(() -> new RuntimeException("Persona not found"));
-        personaRepository.delete(persona);
-    }
-
-    @Override
     public People updatePersona(Long id, People personaDetails) {
         People persona = personaRepository.findById(id).orElseThrow(() -> new RuntimeException("Persona not found"));
         persona.setApellidos(personaDetails.getApellidos());
@@ -42,5 +36,11 @@ public class PeopleServiceImpl implements PeopleService {
         persona.setTelefono(personaDetails.getTelefono());
         persona.setFechaNacimiento(personaDetails.getFechaNacimiento());
         return personaRepository.save(persona);
+    }
+
+    @Override
+    public void deletePersona(Long id) {
+        People persona = personaRepository.findById(id).orElseThrow(() -> new RuntimeException("Persona not found"));
+        personaRepository.delete(persona);
     }
 }

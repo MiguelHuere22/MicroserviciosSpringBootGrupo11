@@ -44,6 +44,7 @@
       <module>241DSWSpringMSDemo01Eureka</module>
       <module>241DSWSpringMSDemo01Config</module>
       <module>241DSWSpringMSDemo01People</module>
+      <module>241DSWSpringMSDemo01Ubigeo</module>
       <module>241DSWSpringMSDemo01User</module>
       <module>241DSWSpringMSDemo01Gateway</module>
   </modules>

@@ -1,4 +1,4 @@
-package sm.dsw.ms.people;
+package sm.dsw.ms.ubigeo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,11 +1,11 @@
 package sm.dsw.ms.people.controller;
 
 import sm.dsw.ms.people.model.People;
+import sm.dsw.ms.people.service.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import sm.dsw.ms.people.service.PeopleService;
 
 @RestController
 @RequestMapping("/personas")
