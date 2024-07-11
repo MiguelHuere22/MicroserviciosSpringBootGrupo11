@@ -1,6 +1,7 @@
 package sm.dsw.ms.ubigeo.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Ubigeo")
@@ -11,25 +12,12 @@ public class Ubigeo {
     @Column(name = "id_ubigeo")
     private Long idUbigeo;
 
-    @Column(name = "departamento", nullable = false)
     private String departamento;
-
-    @Column(name = "provincia", nullable = false)
     private String provincia;
-
-    @Column(name = "distrito", nullable = false)
     private String distrito;
-
-    @Column(name = "superficie")
     private Double superficie;
-
-    @Column(name = "altitud")
     private Double altitud;
-
-    @Column(name = "latitud")
     private Double latitud;
-
-    @Column(name = "longitud")
     private Double longitud;
 
     // Getters y Setters

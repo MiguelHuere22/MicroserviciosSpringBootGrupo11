@@ -1,46 +1,71 @@
 package sm.dsw.ms.people.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import sm.dsw.ms.people.dto.UbigeoWithPeopleResponse;
 import sm.dsw.ms.people.model.People;
 import sm.dsw.ms.people.repository.PeopleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class PeopleServiceImpl implements PeopleService {
 
     @Autowired
-    private PeopleRepository personaRepository;
+    private PeopleRepository peopleRepository;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Value("${ubigeo.service.url}")
+    private String ubigeoServiceUrl;
 
     @Override
     public List<People> getAllPersonas() {
-        return personaRepository.findAll();
+        return peopleRepository.findAll();
     }
 
     @Override
     public People getPersonaById(Long id) {
-        return personaRepository.findById(id).orElseThrow(() -> new RuntimeException("Persona not found"));
+        return peopleRepository.findById(id).orElseThrow(() -> new RuntimeException("Persona not found"));
     }
 
     @Override
     public People createPersona(People persona) {
-        return personaRepository.save(persona);
+        return peopleRepository.save(persona);
     }
 
     @Override
     public People updatePersona(Long id, People personaDetails) {
-        People persona = personaRepository.findById(id).orElseThrow(() -> new RuntimeException("Persona not found"));
+        People persona = peopleRepository.findById(id).orElseThrow(() -> new RuntimeException("Persona not found"));
         persona.setApellidos(personaDetails.getApellidos());
         persona.setNombres(personaDetails.getNombres());
         persona.setSexo(personaDetails.getSexo());
         persona.setTelefono(personaDetails.getTelefono());
         persona.setFechaNacimiento(personaDetails.getFechaNacimiento());
-        return personaRepository.save(persona);
+        persona.setIdUbigeo(personaDetails.getIdUbigeo());
+        return peopleRepository.save(persona);
     }
 
     @Override
     public void deletePersona(Long id) {
-        People persona = personaRepository.findById(id).orElseThrow(() -> new RuntimeException("Persona not found"));
-        personaRepository.delete(persona);
+        People persona = peopleRepository.findById(id).orElseThrow(() -> new RuntimeException("Persona not found"));
+        peopleRepository.delete(persona);
+    }
+
+    @Override
+    public List<People> findByIdUbigeo(Long idUbigeo) {
+        return peopleRepository.findByIdUbigeo(idUbigeo);
+    }
+
+    @Override
+    public UbigeoWithPeopleResponse getUbigeoWithPersonas(Long idUbigeo) {
+        String url = ubigeoServiceUrl + "/" + idUbigeo;
+        UbigeoWithPeopleResponse ubigeo = restTemplate.getForObject(url, UbigeoWithPeopleResponse.class);
+        List<People> personas = peopleRepository.findByIdUbigeo(idUbigeo);
+        ubigeo.setPersonas(personas);
+        return ubigeo;
     }
 }

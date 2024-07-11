@@ -12,20 +12,13 @@ public class People {
     @Column(name = "id_Persona")
     private Long idPersona;
 
-    @Column(name = "Apellidos", nullable = false)
     private String apellidos;
-
-    @Column(name = "Nombres", nullable = false)
     private String nombres;
-
-    @Column(name = "Sexo", nullable = false, length = 1)
     private char sexo;
-
-    @Column(name = "Telefono", nullable = false, length = 9)
     private String telefono;
-
-    @Column(name = "Fecha_nacimiento", nullable = false)
     private Date fechaNacimiento;
+
+    private Long idUbigeo; // Relación con Ubigeo por ID
 
     // Getters y Setters
     public Long getIdPersona() {
@@ -74,5 +67,13 @@ public class People {
 
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Long getIdUbigeo() {
+        return idUbigeo;
+    }
+
+    public void setIdUbigeo(Long idUbigeo) {
+        this.idUbigeo = idUbigeo;
     }
 }

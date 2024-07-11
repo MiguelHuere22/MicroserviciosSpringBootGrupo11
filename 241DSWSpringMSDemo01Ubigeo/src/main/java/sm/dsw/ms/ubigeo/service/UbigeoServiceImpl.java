@@ -4,6 +4,7 @@ import sm.dsw.ms.ubigeo.model.Ubigeo;
 import sm.dsw.ms.ubigeo.repository.UbigeoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service

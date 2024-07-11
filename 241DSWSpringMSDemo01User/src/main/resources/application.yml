@@ -1,5 +1,5 @@
 spring:
   application:
-    name: 241CC341SpringMSDemo01User
+    name: 241DSWSpringMSDemo01User
   config:
     import: optional:configserver:http://localhost:8888
